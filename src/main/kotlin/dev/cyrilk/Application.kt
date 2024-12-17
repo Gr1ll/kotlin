@@ -1,7 +1,7 @@
 package dev.cyrilk
 
-import dev.cyrilk.time.startTimer
+import dev.cyrilk.time.Timer
 
 fun main()  {
-    startTimer();
+    Timer().startTimer();
 }

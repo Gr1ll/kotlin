@@ -2,6 +2,7 @@ package dev.cyrilk.weather
 
 import com.google.gson.Gson
 import dev.cyrilk.types.WeatherApiData
+import io.github.cdimascio.dotenv.dotenv
 import java.net.URI
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -9,7 +10,8 @@ import java.util.Calendar
 class Weather {
 
     private fun getWeatherData(): WeatherApiData {
-        val weatherApiUrl: URI = URI.create("https://api.open-meteo.com/v1/forecast?latitude=47.097226&longitude=8.27263&daily=temperature_2m_max,sunrise,sunset,wind_speed_10m_max&timezone=Europe%2FBerlin&forecast_days=1")
+        val dotenv = dotenv()
+        val weatherApiUrl: URI = URI.create(dotenv["WEATHER_API_URL"])
         return Gson().fromJson(weatherApiUrl.toURL().readText(), WeatherApiData::class.java)
     }
 
