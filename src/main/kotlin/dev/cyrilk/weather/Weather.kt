@@ -18,7 +18,6 @@ class Weather {
     fun getMsUntilSunrise(): Long {
         val weatherData = getWeatherData();
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
-        println(weatherData)
         val sunriseMs = simpleDateFormat.parse(weatherData.daily.sunrise[0]).toInstant().toEpochMilli()
         val nowMs = Calendar.getInstance().timeInMillis
 
