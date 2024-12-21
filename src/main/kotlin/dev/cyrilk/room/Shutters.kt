@@ -30,7 +30,10 @@ class Shutters(val weatherData: WeatherApiData? = null) {
     }
 
     fun openOnSunrise() {
-        val msUntilSunrise: Long = Weather().getMsUntilSunrise()
+        val msUntilSunrise: Long
+        runBlocking {
+            msUntilSunrise = Weather().getMsUntilSunrise()
+        }
         if (checkEmergencies()) return;
         if (msUntilSunrise < 0) {
             runBlocking {
@@ -48,7 +51,10 @@ class Shutters(val weatherData: WeatherApiData? = null) {
     }
 
     fun closeOnSunset() {
-        val msUntilSunset: Long = Weather().getMsUntilSunset()
+        val msUntilSunset: Long;
+        runBlocking {
+            msUntilSunset = Weather().getMsUntilSunset()
+        }
         if (checkEmergencies()) return;
         if (msUntilSunset < 0) {
             runBlocking {
