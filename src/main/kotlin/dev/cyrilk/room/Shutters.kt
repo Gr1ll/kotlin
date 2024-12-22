@@ -17,28 +17,45 @@ class Shutters(val weatherData: WeatherApiData? = null) {
 
     suspend fun setShutter(percentage: Int) {
         val client = HttpClient(CIO)
-        client.get(dotenv["ROLLER_API_URL"] + "?go=to_pos&roller_pos=" + percentage.toString())
+        client.get(dotenv["ROLLER_API_SET_URL"] + percentage.toString())
         client.close();
     }
 
-    suspend fun getShutterPercentage(): Int {
+    private suspend fun getShutterPercentage(): Int {
         val client = HttpClient(CIO)
-        val response: HttpResponse = client.get(dotenv["ROLLER_API_URL"])
+        val response: HttpResponse = client.get(dotenv["ROLLER_API_GET_URL"])
         client.close();
+        println(response.bodyAsText())
         val shutterPosition = Gson().fromJson(response.bodyAsText(), Shutter::class.java).current_pos
+        println(shutterPosition)
         return shutterPosition
     }
 
     fun openOnSunrise() {
         val msUntilSunrise: Long
+        val msUntilSunset: Long
+
         runBlocking {
             msUntilSunrise = Weather().getMsUntilSunrise()
+            msUntilSunset = Weather().getMsUntilSunset()
         }
+
         if (checkEmergencies()) return;
         if (msUntilSunrise < 0) {
+            if (msUntilSunset < 0) return;
             runBlocking {
+                val lights = Lights()
                 setShutter(100)
+                lights.setLightStatus(true)
             }
+            Timer().schedule(object : TimerTask() {
+                override fun run() {
+                    runBlocking {
+                        val lights = Lights()
+                        lights.setLightStatus(false)
+                    }
+                }
+            },60000)
             return;
         };
         Timer().schedule(object : TimerTask() {
@@ -52,9 +69,11 @@ class Shutters(val weatherData: WeatherApiData? = null) {
 
     fun closeOnSunset() {
         val msUntilSunset: Long;
+
         runBlocking {
             msUntilSunset = Weather().getMsUntilSunset()
         }
+
         if (checkEmergencies()) return;
         if (msUntilSunset < 0) {
             runBlocking {
