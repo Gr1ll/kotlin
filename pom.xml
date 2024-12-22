@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>dev.cyrilk</groupId>
-    <artifactId>ktor-sample</artifactId>
+    <artifactId>room-manager</artifactId>
     <version>0.0.1</version>
-    <name>ktor-sample</name>
-    <description>ktor-sample</description>
+    <name>room-manager</name>
+    <description>room-manager</description>
     <properties>
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin_version>2.1.0</kotlin_version>

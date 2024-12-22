@@ -1,4 +1,4 @@
-# ktor-sample
+# Room manager
 
 This project was created using the [Ktor Project Generator](https://start.ktor.io).
 
@@ -22,11 +22,11 @@ Here's a list of features included in this project:
 
 To build or run the project, use one of the following tasks:
 
-| Task                                                           | Description       |
-|----------------------------------------------------------------|-------------------|
-| `mvn test`                                                     | Run the tests     |
-| `mvn package`                                                  | Build the project |
-| `java -jar target/ktor-sample-0.0.1-jar-with-dependencies.jar` | Run the server    |
+| Task                                                            | Description       |
+|-----------------------------------------------------------------|-------------------|
+| `mvn test`                                                      | Run the tests     |
+| `mvn package`                                                   | Build the project |
+| `java -jar target/room-manager-0.0.1-jar-with-dependencies.jar` | Run the server    |
 
 If the server starts successfully, you'll see the following output:
 
