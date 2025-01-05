@@ -37,3 +37,9 @@ out/
 
 target
 .env
+
+### Vitepress ###
+docs/.vitepress/dist
+docs/.vitepress/cache
+docs/node_modules
+docs/public/kdoc

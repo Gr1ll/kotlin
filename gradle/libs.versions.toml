@@ -10,8 +10,9 @@ io-ktor-ktor-client-core-jvm = "2.3.13"
 org-jetbrains-kotlin-kotlin-stdlib = "2.1.0"
 org-jetbrains-kotlin-kotlin-test-junit = "2.1.0"
 org-jetbrains-kotlinx-kotlinx-coroutines-core = "1.9.0"
-org-jetbrains-kotlinx-kotlinx-coroutines-debug = "1.9.0"
 org-slf4j-slf4j-api = "2.0.9"
+org-jetbrains-dokka = "2.0.0"
+org-jetbrains-kotlin-jvm = "2.1.0" # Add Kotlin JVM plugin version
 
 [libraries]
 ch-qos-logback-logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "ch-qos-logback-logback-classic" }
@@ -22,5 +23,10 @@ io-ktor-ktor-client-core-jvm = { module = "io.ktor:ktor-client-core-jvm", versio
 org-jetbrains-kotlin-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "org-jetbrains-kotlin-kotlin-stdlib" }
 org-jetbrains-kotlin-kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "org-jetbrains-kotlin-kotlin-test-junit" }
 org-jetbrains-kotlinx-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "org-jetbrains-kotlinx-kotlinx-coroutines-core" }
-org-jetbrains-kotlinx-kotlinx-coroutines-debug = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-debug", version.ref = "org-jetbrains-kotlinx-kotlinx-coroutines-debug" }
+org-jetbrains-kotlinx-kotlinx-coroutines-debug = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-debug", version.ref = "org-jetbrains-kotlinx-kotlinx-coroutines-core" }
 org-slf4j-slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "org-slf4j-slf4j-api" }
+
+[plugins]
+org-jetbrains-dokka = { id = "org.jetbrains.dokka", version.ref = "org-jetbrains-dokka" }
+
+org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" } # Add Kotlin JVM plugin

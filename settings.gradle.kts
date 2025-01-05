@@ -3,5 +3,18 @@
  *
  * This project uses @Incubating APIs which are subject to change.
  */
-
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
 rootProject.name = "room-manager"
+include("roommanager")
+
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
