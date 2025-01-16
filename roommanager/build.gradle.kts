@@ -16,6 +16,9 @@ dependencies {
     api(libs.org.jetbrains.kotlinx.kotlinx.coroutines.core)
     api(libs.io.github.cdimascio.dotenv.kotlin)
     api(libs.io.ktor.ktor.client.core.jvm)
+    implementation("io.ktor:ktor-client-okhttp-jvm:2.3.13")
+    implementation("org.slf4j:slf4j-api:1.6.1")
+    implementation("org.slf4j:slf4j-simple:1.6.1")
 
 }
 application {

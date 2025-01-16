@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import dev.cyrilk.types.WeatherApiData
 import io.github.cdimascio.dotenv.dotenv
 import io.ktor.client.*
-import io.ktor.client.engine.cio.*
+import io.ktor.client.engine.okhttp.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import java.text.SimpleDateFormat
@@ -14,10 +14,16 @@ class Weather {
 
     private suspend fun getWeatherData(): WeatherApiData {
         val dotenv = dotenv()
-        val client = HttpClient(CIO)
+        val client = HttpClient(OkHttp) {
+            engine {
+                config {
+                    followRedirects(true)
+                }
+            }
+        }
         val response: HttpResponse = client.get(dotenv["WEATHER_API_URL"])
         client.close();
-        return Gson().fromJson(response.bodyAsText(),WeatherApiData::class.java)
+        return Gson().fromJson(response.bodyAsText(), WeatherApiData::class.java)
     }
 
     suspend fun getMsUntilSunrise(): Long {
